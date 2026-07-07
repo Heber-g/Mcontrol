@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",                          /* Versão do JS de saída */
+    "module": "NodeNext",                        /* Habilita suporte a ES Modules no Node */
+    "moduleResolution": "NodeNext",              /* Alinha a resolução de arquivos com o Node moderno */
+    "esModuleInterop": true,                     /* Melhora compatibilidade com pacotes antigos */
+    "strict": true,                              /* Ativa checagem estrita de tipos */
+    "skipLibCheck": true                         /* Pula checagem de tipos das node_modules */
+  }
+}
