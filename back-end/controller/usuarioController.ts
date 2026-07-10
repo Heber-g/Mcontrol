@@ -62,6 +62,39 @@ router.get('/', usuarioController.getAll);
 /**
  * @openapi
  * {
+ * "/usuarios/{id}": {
+ * "get": {
+ * "summary": "Retorna um usuário específico",
+ * "description": "Retorna as informações de um usuário com base no ID fornecido.",
+ * "parameters": [
+ * {
+ * "name": "id",
+ * "in": "path",
+ * "required": true,
+ * "schema": { "type": "integer" }
+ * }
+ * ],
+ * "responses": {
+ * "200": {
+ * "description": "Usuário encontrado com sucesso.",
+ * "content": {
+ * "application/json": {
+ * "schema": { "$ref": "#/components/schemas/Usuario" }
+ * }
+ * }
+ * },
+ * "404": { "description": "Usuário não encontrado." },
+ * "500": { "description": "Erro interno do servidor." }
+ * }
+ * }
+ * }
+ * }
+ */
+router.get('/:id', usuarioController.getById);
+
+/**
+ * @openapi
+ * {
  * "/usuarios": {
  * "post": {
  * "summary": "Cria um novo usuário",
@@ -90,5 +123,45 @@ router.get('/', usuarioController.getAll);
  * }
  */
 router.post('/', usuarioController.create);
+
+/**
+ * @openapi
+ * {
+ * "/usuarios/{id}": {
+ * "put": {
+ * "summary": "Atualiza um usuário existente",
+ * "description": "Atualiza as informações de um usuário no sistema.",
+ * "parameters": [
+ * {
+ * "name": "id",
+ * "in": "path",
+ * "required": true,
+ * "schema": { "type": "integer" }
+ * }
+ * ],
+ * "requestBody": {
+ * "required": true,
+ * "content": {
+ * "application/json": {
+ * "schema": { "$ref": "#/components/schemas/Usuario" }
+ * }
+ * }
+ * },
+ * "responses": {
+ * "200": {
+ * "description": "Usuário atualizado com sucesso.",
+ * "content": {
+ * "application/json": {
+ * "schema": { "$ref": "#/components/schemas/Usuario" }
+ * }
+ * }
+ * },
+ * "500": { "description": "Erro interno do servidor." }
+ * }
+ * }
+ * }
+ * }
+ */
+router.put('/:id', usuarioController.update);
 
 export default router;
