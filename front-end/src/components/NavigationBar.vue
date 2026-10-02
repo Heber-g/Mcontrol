@@ -1,61 +1,76 @@
 <template>
-    <div class="navigation-bar">
-        <div class="SearchBar">
-            <input type="text" placeholder="Pesquisar" class="text-field"/>
-            <button class="btn">
-                <Lupasvg class="iconLupa"/>
-            </button>
-        </div>
-    </div>
-</template>
-<script setup>
-import Lupasvg from './icons/LupaIcon.vue';
+  <div class="search-bar">
+    <input
+      v-model="search"
+      type="search"
+      placeholder="Pesquisar membros..."
+    />
 
+    <button
+      type="button"
+      aria-label="Pesquisar"
+    >
+      <Lupasvg class="icon" />
+    </button>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import Lupasvg from './icons/LupaIcon.vue'
+
+const search = ref('')
 </script>
 
-
 <style scoped>
-.text-field {
-    color: black;
-    background-color: #6b91fc;
-    padding: 0.5rem;
-    /* width: 30%;
-    height: 20%; */
-    border: 1px solid #ccc;
-    border-radius: 1rem;
-    text-align: center;
-    font-size: 0.8rem;
+.search-bar {
+  display: flex;
+  align-items: center;
+
+  width: min(100%, 450px);
+
+  background: #eef3f8;
+  border-radius: 999px;
+
+  padding: 0.25rem 0.35rem 0.25rem 1rem;
 }
 
-::placeholder {
-    color: rgb(255, 255, 255);
-    font-size: 0.8rem;
+.search-bar input {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-size: 0.9rem;
+  color: #222;
 }
 
-.SearchBar {
-    display: flex;
-    width: fit-content;
-    /* justify-content: center; */ /* Centraliza horizontalmente, tirado para testes */
-    align-items: center;
-    gap: 0.1rem;
-    margin-left: 4rem;
-    box-sizing: border-box;
+.search-bar button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #0a66c2;
+  cursor: pointer;
 }
 
-.iconLupa {
-    width: 1rem;
-    height: 1rem;
+.icon {
+  width: 16px;
+  height: 16px;
 }
 
-.btn {
-    background-color: #6b91fc;
-    margin-left: 0.1rem;
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 500px) {
+  .search-bar {
+    order: 3;
+    width: 100%;
+  }
 }
 </style>
